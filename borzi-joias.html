@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Borzi Joias — Joalheria Autoral</title>
+<meta name="description" content="Joias feitas à mão para eternizar histórias. Borzi Joias — joalheria autoral de luxo artesanal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --off-white: #f7f4ef;
+    --beige: #ede8df;
+    --sand: #d4c9b5;
+    --gold: #c9a96e;
+    --gold-light: #ddc48a;
+    --silver: #b8bec6;
+    --emerald: #1e4035;
+    --emerald-deep: #152d25;
+    --emerald-mid: #2a5548;
+    --aqua: #a8cdd4;
+    --warm-gray: #8c8880;
+    --dark: #1a1a18;
+    --text-dark: #2c2c28;
+    --text-mid: #6b6860;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--off-white);
+    color: var(--text-dark);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── CURSOR ── */
+  * { cursor: none !important; }
+  .cursor {
+    position: fixed; top: 0; left: 0;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, background 0.3s;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    position: fixed; top: 0; left: 0;
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.35s cubic-bezier(.25,.8,.25,1), opacity 0.3s;
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+  }
+  body:hover .cursor { opacity: 1; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 52px;
+    mix-blend-mode: normal;
+    transition: background 0.5s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(247,244,239,0.94);
+    backdrop-filter: blur(12px);
+    padding: 18px 52px;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    color: var(--off-white);
+    text-decoration: none;
+    transition: color 0.4s;
+  }
+  nav.scrolled .nav-logo { color: var(--emerald-deep); }
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  nav.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a:hover { color: var(--gold) !important; }
+  .nav-cta {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold) !important;
+    border: 1px solid var(--gold);
+    padding: 10px 22px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--dark) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100vh; min-height: 700px;
+    background: var(--emerald-deep);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg-texture {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(42,85,72,0.45) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 70% at 20% 80%, rgba(168,205,212,0.08) 0%, transparent 60%),
+      linear-gradient(160deg, var(--emerald-deep) 0%, #0e2118 100%);
+  }
+  .hero-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+  }
+  /* Decorative ring */
+  .hero-ring {
+    position: absolute;
+    width: min(55vw, 520px); height: min(55vw, 520px);
+    border: 1px solid rgba(201,169,110,0.18);
+    border-radius: 50%;
+    top: 50%; left: 58%;
+    transform: translate(-50%, -50%);
+    animation: slowRotate 40s linear infinite;
+  }
+  .hero-ring-2 {
+    position: absolute;
+    width: min(38vw, 360px); height: min(38vw, 360px);
+    border: 1px solid rgba(201,169,110,0.1);
+    border-radius: 50%;
+    top: 50%; left: 58%;
+    transform: translate(-50%, -50%);
+    animation: slowRotate 28s linear infinite reverse;
+  }
+  @keyframes slowRotate {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  /* Star ornament */
+  .star {
+    display: inline-block;
+    width: 18px; height: 18px;
+    background: var(--gold);
+    clip-path: polygon(50% 0%, 55% 45%, 100% 50%, 55% 55%, 50% 100%, 45% 55%, 0% 50%, 45% 45%);
+  }
+  .star-sm {
+    width: 10px; height: 10px;
+    clip-path: polygon(50% 0%, 55% 45%, 100% 50%, 55% 55%, 50% 100%, 45% 55%, 0% 50%, 45% 45%);
+    background: var(--gold);
+    display: inline-block;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    color: var(--off-white);
+    padding: 0 24px;
+    animation: heroFadeUp 1.4s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    font-weight: 300;
+  }
+  .hero-eyebrow span { display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.6; }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+  .hero-h1 em { font-style: italic; font-weight: 300; color: var(--gold-light); }
+  .hero-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    color: rgba(247,244,239,0.55);
+    margin-top: 22px;
+    margin-bottom: 52px;
+    text-transform: uppercase;
+  }
+  .hero-ctas {
+    display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+  }
+  .btn-primary {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 16px 38px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: background 0.35s, transform 0.3s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ghost {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    background: transparent;
+    color: rgba(247,244,239,0.75);
+    border: 1px solid rgba(247,244,239,0.3);
+    padding: 16px 38px;
+    text-decoration: none;
+    font-weight: 300;
+    transition: border-color 0.3s, color 0.3s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(247,244,239,0.4);
+    z-index: 2;
+    animation: scrollBob 2.4s ease-in-out infinite;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, rgba(201,169,110,0.6), transparent);
+  }
+  @keyframes scrollBob {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SECTIONS BASE ── */
+  section { padding: 100px 0; }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+  .section-eyebrow {
+    font-size: 0.63rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-eyebrow span { display: block; width: 30px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4.5vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.12;
+    color: var(--text-dark);
+  }
+  .section-title em { font-style: italic; color: var(--emerald-mid); }
+  .section-body {
+    font-size: 0.88rem;
+    line-height: 1.85;
+    color: var(--text-mid);
+    max-width: 480px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── MARQUEE STRIP ── */
+  .marquee-strip {
+    background: var(--emerald-deep);
+    padding: 18px 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(201,169,110,0.15);
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+  .marquee-track {
+    display: flex; gap: 0;
+    animation: marquee 22s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-item {
+    display: flex; align-items: center; gap: 28px;
+    padding: 0 28px;
+    font-size: 0.63rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.5);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+  }
+  .marquee-item .dot {
+    width: 5px; height: 5px;
+    background: var(--gold); border-radius: 50%;
+    opacity: 0.6;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── COLLECTIONS ── */
+  .collections { background: var(--off-white); }
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+  }
+  .col-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: var(--beige);
+  }
+  .col-card-bg {
+    width: 100%; height: 100%;
+    transition: transform 0.9s cubic-bezier(.25,.8,.25,1);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .col-card:hover .col-card-bg { transform: scale(1.05); }
+  .col-card-inner {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+    position: relative;
+  }
+  /* Jewelry illustrations via CSS */
+  .jewel-display {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+  }
+  .col-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(21,45,37,0.85) 0%, rgba(21,45,37,0.1) 55%, transparent 100%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 32px;
+    transition: background 0.5s;
+  }
+  .col-card:hover .col-card-overlay {
+    background: linear-gradient(to top, rgba(21,45,37,0.92) 0%, rgba(21,45,37,0.25) 65%, transparent 100%);
+  }
+  .col-card-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+  .col-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: var(--off-white);
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+  .col-card-link {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.5);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 12px;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+  .col-card-link::after { content: '→'; font-size: 0.9rem; }
+  .col-card:hover .col-card-link { color: var(--gold); }
+
+  /* Jewel SVG Displays */
+  .ring-display {
+    position: relative;
+    width: 180px; height: 180px;
+  }
+  .necklace-display {
+    position: relative;
+    width: 160px; height: 220px;
+  }
+  .earring-display {
+    position: relative;
+    width: 140px; height: 200px;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--beige);
+    position: relative;
+    overflow: hidden;
+  }
+  .about::before {
+    content: 'BORZI';
+    position: absolute;
+    right: -2%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(8rem, 18vw, 18rem);
+    font-weight: 300;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,169,110,0.1);
+    letter-spacing: 0.12em;
+    pointer-events: none;
+    user-select: none;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .about-img-frame {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--emerald-deep);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-img-frame::after {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(201,169,110,0.25);
+    pointer-events: none;
+  }
+  .about-accent-box {
+    position: absolute;
+    bottom: -24px; right: -24px;
+    width: 140px; height: 140px;
+    background: var(--sand);
+    z-index: -1;
+  }
+  .about-stat {
+    position: absolute;
+    top: -20px; left: -20px;
+    background: var(--off-white);
+    padding: 20px 28px;
+    border: 1px solid rgba(201,169,110,0.2);
+  }
+  .about-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--emerald-mid);
+    line-height: 1;
+  }
+  .about-stat-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 6px;
+  }
+  .about-text { position: relative; z-index: 1; }
+  .about-text .section-title { margin-bottom: 28px; }
+  .about-text .section-body { margin-bottom: 20px; }
+  .about-values {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 36px;
+  }
+  .about-value {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    border: 1px solid rgba(140,136,128,0.25);
+    padding: 8px 18px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .about-value:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── PROCESS ── */
+  .process {
+    background: var(--emerald-deep);
+    color: var(--off-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .process::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 90% 50%, rgba(42,85,72,0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 10% 20%, rgba(168,205,212,0.06) 0%, transparent 60%);
+  }
+  .process-header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative; z-index: 1;
+  }
+  .process-header .section-title { color: var(--off-white); }
+  .process-header .section-title em { color: var(--gold-light); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(201,169,110,0.1);
+    position: relative; z-index: 1;
+  }
+  .process-step {
+    background: transparent;
+    padding: 50px 36px;
+    border-right: 1px solid rgba(201,169,110,0.1);
+    position: relative;
+    transition: background 0.4s;
+  }
+  .process-step:last-child { border-right: none; }
+  .process-step:hover { background: rgba(42,85,72,0.4); }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(201,169,110,0.15);
+    line-height: 1;
+    margin-bottom: 20px;
+    transition: color 0.4s;
+  }
+  .process-step:hover .step-num { color: rgba(201,169,110,0.35); }
+  .step-icon {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(201,169,110,0.3);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 22px;
+    transition: border-color 0.4s;
+  }
+  .process-step:hover .step-icon { border-color: var(--gold); }
+  .step-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.2; }
+  .step-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--off-white);
+    margin-bottom: 14px;
+  }
+  .step-desc {
+    font-size: 0.8rem;
+    line-height: 1.75;
+    color: rgba(247,244,239,0.45);
+    font-weight: 300;
+  }
+
+  /* ── PRODUCTS ── */
+  .products { background: var(--off-white); }
+  .products-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 60px;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .product-card {
+    position: relative;
+  }
+  .product-img {
+    aspect-ratio: 3/4;
+    background: var(--beige);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .product-img-bg {
+    width: 100%; height: 100%;
+    transition: transform 0.8s cubic-bezier(.25,.8,.25,1);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .product-card:hover .product-img-bg { transform: scale(1.06); }
+  .product-badge {
+    position: absolute;
+    top: 16px; left: 16px;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--emerald-deep);
+    color: var(--gold);
+    padding: 5px 12px;
+    font-weight: 300;
+  }
+  .product-actions {
+    position: absolute;
+    bottom: 16px; right: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .product-card:hover .product-actions { opacity: 1; transform: translateY(0); }
+  .product-action-btn {
+    width: 38px; height: 38px;
+    background: rgba(247,244,239,0.9);
+    border: none;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(8px);
+  }
+  .product-action-btn svg { width: 16px; height: 16px; stroke: var(--text-dark); fill: none; stroke-width: 1.5; }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+  .product-material {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 10px;
+  }
+  .product-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--text-dark);
+    font-weight: 400;
+  }
+
+  /* ── EDITORIAL ── */
+  .editorial {
+    background: var(--sand);
+    overflow: hidden;
+  }
+  .editorial-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+  .editorial-text-side {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px;
+    background: var(--emerald-deep);
+    color: var(--off-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .editorial-text-side::before {
+    content: '✦';
+    position: absolute;
+    bottom: -40px; right: -20px;
+    font-size: 18rem;
+    color: rgba(201,169,110,0.04);
+    line-height: 1;
+  }
+  .editorial-text-side .section-title { color: var(--off-white); margin-bottom: 24px; }
+  .editorial-text-side .section-title em { color: var(--gold-light); }
+  .editorial-text-side .section-body { color: rgba(247,244,239,0.55); }
+  .editorial-grid-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    background: var(--sand);
+  }
+  .editorial-cell {
+    background: var(--beige);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    transition: transform 0.5s;
+    min-height: 200px;
+  }
+  .editorial-cell:hover { z-index: 2; transform: scale(1.02); }
+  .editorial-cell-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(21,45,37,0) 0%, rgba(21,45,37,0.2) 100%);
+    transition: background 0.4s;
+  }
+  .editorial-cell:hover .editorial-cell-overlay {
+    background: linear-gradient(135deg, rgba(21,45,37,0.05) 0%, rgba(21,45,37,0.3) 100%);
+  }
+
+  /* ── INSTAGRAM STRIP ── */
+  .insta-section {
+    background: var(--off-white);
+    text-align: center;
+    padding: 80px 0;
+  }
+  .insta-handle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+  .insta-handle a { color: inherit; text-decoration: none; }
+  .insta-handle a:hover { color: var(--gold); }
+  .insta-sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 48px;
+  }
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+  .insta-cell {
+    aspect-ratio: 1;
+    background: var(--beige);
+    overflow: hidden;
+    position: relative;
+  }
+  .insta-cell:hover .insta-cell-overlay { opacity: 1; }
+  .insta-cell-overlay {
+    position: absolute; inset: 0;
+    background: rgba(21,45,37,0.6);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+  .insta-cell-overlay svg { width: 28px; height: 28px; stroke: white; fill: none; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: rgba(247,244,239,0.5);
+    padding: 80px 0 40px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  .footer-brand-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .footer-brand-desc {
+    font-size: 0.8rem;
+    line-height: 1.8;
+    color: rgba(247,244,239,0.35);
+    max-width: 260px;
+    margin-bottom: 28px;
+  }
+  .footer-socials {
+    display: flex; gap: 14px;
+  }
+  .footer-social {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(247,244,239,0.12);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    transition: border-color 0.3s;
+  }
+  .footer-social:hover { border-color: var(--gold); }
+  .footer-social svg { width: 16px; height: 16px; stroke: rgba(247,244,239,0.5); fill: none; stroke-width: 1.5; }
+  .footer-social:hover svg { stroke: var(--gold); }
+  .footer-col h4 {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 12px; }
+  .footer-col ul li a {
+    font-size: 0.8rem;
+    color: rgba(247,244,239,0.4);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+  .footer-col ul li a:hover { color: var(--off-white); }
+  .newsletter-form {
+    display: flex;
+    margin-top: 8px;
+  }
+  .newsletter-input {
+    flex: 1;
+    background: rgba(247,244,239,0.05);
+    border: 1px solid rgba(247,244,239,0.1);
+    border-right: none;
+    padding: 11px 16px;
+    color: var(--off-white);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .newsletter-input::placeholder { color: rgba(247,244,239,0.25); }
+  .newsletter-input:focus { border-color: rgba(201,169,110,0.4); }
+  .newsletter-btn {
+    background: var(--gold);
+    border: none;
+    padding: 11px 18px;
+    color: var(--dark);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(247,244,239,0.07);
+    padding-top: 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(247,244,239,0.25);
+    letter-spacing: 0.1em;
+  }
+  .footer-star { display: flex; align-items: center; gap: 12px; }
+
+  /* ── ORNAMENT DIVIDER ── */
+  .divider {
+    display: flex; align-items: center; justify-content: center;
+    gap: 20px;
+    padding: 20px 0 0;
+  }
+  .divider-line { height: 1px; width: 80px; background: var(--gold); opacity: 0.3; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links { display: none; }
+    .container { padding: 0 24px; }
+    section { padding: 70px 0; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about::before { display: none; }
+    .collections-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-step { border-bottom: 1px solid rgba(201,169,110,0.1); }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .editorial-inner { grid-template-columns: 1fr; }
+    .editorial-text-side { padding: 52px 32px; }
+    .insta-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .hero-h1 { font-size: 2.6rem; }
+  }
+  @media (max-width: 540px) {
+    .collections-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .products-header { flex-direction: column; }
+    .footer-top { grid-template-columns: 1fr; }
+    .insta-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Hover link underline for footer */
+  a { font-family: 'Jost', sans-serif; }
+
+  /* WhatsApp float */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 32px; right: 32px;
+    width: 52px; height: 52px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 90;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+  .whatsapp-float svg { width: 26px; height: 26px; fill: white; }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/5548999999999" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">BORZI</a>
+  <ul class="nav-links">
+    <li><a href="#colecoes">Coleções</a></li>
+    <li><a href="#sobre">Atelier</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#produtos">Peças</a></li>
+    <li><a href="#contato" class="nav-cta">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-texture"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring-2"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span></span>
+      Joalheria Autoral
+      <span></span>
+    </div>
+    <h1 class="hero-h1">
+      Joias feitas à mão<br>para <em>eternizar</em><br>histórias.
+    </h1>
+    <p class="hero-sub">Ouro · Prata 950 · Pedras Delicadas · Arte Artesanal</p>
+    <div class="hero-ctas">
+      <a href="#colecoes" class="btn-primary">Explorar Coleção</a>
+      <a href="#sobre" class="btn-ghost">Conhecer o Atelier</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marqueeTrack">
+    <div class="marquee-item">Joias Autorais <div class="dot"></div></div>
+    <div class="marquee-item">Feitas à Mão <div class="dot"></div></div>
+    <div class="marquee-item">Ouro & Prata 950 <div class="dot"></div></div>
+    <div class="marquee-item">Design Exclusivo <div class="dot"></div></div>
+    <div class="marquee-item">Arte Artesanal <div class="dot"></div></div>
+    <div class="marquee-item">Pedras Delicadas <div class="dot"></div></div>
+    <div class="marquee-item">Borzi Joias <div class="dot"></div></div>
+    <div class="marquee-item">Joias Autorais <div class="dot"></div></div>
+    <div class="marquee-item">Feitas à Mão <div class="dot"></div></div>
+    <div class="marquee-item">Ouro & Prata 950 <div class="dot"></div></div>
+    <div class="marquee-item">Design Exclusivo <div class="dot"></div></div>
+    <div class="marquee-item">Arte Artesanal <div class="dot"></div></div>
+    <div class="marquee-item">Pedras Delicadas <div class="dot"></div></div>
+    <div class="marquee-item">Borzi Joias <div class="dot"></div></div>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="collections" id="colecoes">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow"><span></span> Nossas Coleções</div>
+      <h2 class="section-title">Cada peça, uma <em>história</em><br>que merece ser contada.</h2>
+    </div>
+  </div>
+
+  <div class="collections-grid">
+    <!-- Anéis -->
+    <div class="col-card reveal reveal-delay-1">
+      <div class="col-card-bg">
+        <div class="jewel-display">
+          <svg viewBox="0 0 300 380" width="300" height="380" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="380" fill="#1e3028"/>
+            <!-- Ambient glow -->
+            <ellipse cx="150" cy="190" rx="110" ry="90" fill="rgba(168,205,212,0.06)"/>
+            <!-- Ring band -->
+            <ellipse cx="150" cy="230" rx="55" ry="14" fill="none" stroke="#b8bec6" stroke-width="8" opacity="0.9"/>
+            <ellipse cx="150" cy="230" rx="55" ry="14" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+            <!-- Ring shaft -->
+            <rect x="95" y="160" width="12" height="70" rx="3" fill="#c0c8d0" opacity="0.85"/>
+            <rect x="193" y="160" width="12" height="70" rx="3" fill="#c0c8d0" opacity="0.85"/>
+            <!-- Teardrop stone -->
+            <ellipse cx="150" cy="145" rx="22" ry="28" fill="#a8cdd4" opacity="0.9"/>
+            <ellipse cx="150" cy="145" rx="22" ry="28" fill="none" stroke="rgba(201,169,110,0.6)" stroke-width="1.5"/>
+            <!-- Stone facets -->
+            <line x1="150" y1="117" x2="150" y2="173" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+            <line x1="128" y1="145" x2="172" y2="145" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+            <line x1="133" y1="125" x2="167" y2="165" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+            <!-- Halo diamonds -->
+            <circle cx="150" cy="110" r="4" fill="white" opacity="0.7"/>
+            <circle cx="175" cy="120" r="3" fill="white" opacity="0.6"/>
+            <circle cx="178" cy="148" r="3" fill="white" opacity="0.55"/>
+            <circle cx="172" cy="172" r="3" fill="white" opacity="0.5"/>
+            <circle cx="125" cy="120" r="3" fill="white" opacity="0.6"/>
+            <circle cx="122" cy="148" r="3" fill="white" opacity="0.55"/>
+            <circle cx="128" cy="172" r="3" fill="white" opacity="0.5"/>
+            <!-- Stone sparkle -->
+            <circle cx="138" cy="132" r="3" fill="rgba(255,255,255,0.6)"/>
+            <!-- Reflection -->
+            <ellipse cx="150" cy="240" rx="50" ry="6" fill="rgba(168,205,212,0.08)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="col-card-overlay">
+        <div class="col-card-label">Coleção</div>
+        <div class="col-card-name">Anéis<br>Autorais</div>
+        <a href="#produtos" class="col-card-link">Ver peças</a>
+      </div>
+    </div>
+
+    <!-- Colares -->
+    <div class="col-card reveal reveal-delay-2">
+      <div class="col-card-bg">
+        <div class="jewel-display">
+          <svg viewBox="0 0 300 380" width="300" height="380" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="380" fill="#152d25"/>
+            <ellipse cx="150" cy="190" rx="120" ry="100" fill="rgba(201,169,110,0.04)"/>
+            <!-- Chain arc -->
+            <path d="M60,80 Q150,280 240,80" fill="none" stroke="#c9a96e" stroke-width="2.5" opacity="0.7" stroke-dasharray="4,4"/>
+            <!-- Chain links suggestion -->
+            <path d="M60,80 Q150,260 240,80" fill="none" stroke="rgba(201,169,110,0.35)" stroke-width="6" opacity="0.5"/>
+            <!-- Pendant body -->
+            <ellipse cx="150" cy="260" rx="28" ry="36" fill="#1e4035"/>
+            <ellipse cx="150" cy="260" rx="28" ry="36" fill="none" stroke="#c9a96e" stroke-width="2"/>
+            <!-- Emerald center -->
+            <ellipse cx="150" cy="260" rx="18" ry="24" fill="#2d7a5f" opacity="0.9"/>
+            <ellipse cx="150" cy="260" rx="18" ry="24" fill="none" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+            <!-- Sparkle -->
+            <circle cx="142" cy="250" r="4" fill="rgba(255,255,255,0.5)"/>
+            <!-- Sun halo -->
+            <circle cx="150" cy="260" r="38" fill="none" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
+            <!-- Star ornaments around halo -->
+            <circle cx="150" cy="222" r="2.5" fill="#c9a96e" opacity="0.7"/>
+            <circle cx="188" cy="260" r="2.5" fill="#c9a96e" opacity="0.7"/>
+            <circle cx="112" cy="260" r="2.5" fill="#c9a96e" opacity="0.7"/>
+            <circle cx="150" cy="298" r="2.5" fill="#c9a96e" opacity="0.7"/>
+            <!-- Bail -->
+            <rect x="143" y="224" width="14" height="10" rx="3" fill="#c9a96e" opacity="0.8"/>
+          </svg>
+        </div>
+      </div>
+      <div class="col-card-overlay">
+        <div class="col-card-label">Coleção</div>
+        <div class="col-card-name">Colares<br>& Pingentes</div>
+        <a href="#produtos" class="col-card-link">Ver peças</a>
+      </div>
+    </div>
+
+    <!-- Brincos -->
+    <div class="col-card reveal reveal-delay-3">
+      <div class="col-card-bg">
+        <div class="jewel-display">
+          <svg viewBox="0 0 300 380" width="300" height="380" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="380" fill="#1a2e22"/>
+            <ellipse cx="150" cy="190" rx="100" ry="90" fill="rgba(201,169,110,0.03)"/>
+            <!-- Left earring -->
+            <circle cx="105" cy="100" r="7" fill="#c9a96e" opacity="0.9"/>
+            <rect x="102" y="107" width="6" height="22" rx="2" fill="#c9a96e" opacity="0.7"/>
+            <ellipse cx="105" cy="200" rx="26" ry="34" fill="#1e4035"/>
+            <ellipse cx="105" cy="200" rx="26" ry="34" fill="none" stroke="#c9a96e" stroke-width="1.8"/>
+            <!-- Emerald in left -->
+            <ellipse cx="105" cy="200" rx="16" ry="22" fill="#2d7a5f" opacity="0.9"/>
+            <circle cx="97" cy="190" r="4" fill="rgba(255,255,255,0.4)"/>
+            <!-- Halo around left -->
+            <ellipse cx="105" cy="200" rx="32" ry="40" fill="none" stroke="rgba(201,169,110,0.25)" stroke-width="1" stroke-dasharray="2,3"/>
+            <!-- Right earring -->
+            <circle cx="195" cy="100" r="7" fill="#c9a96e" opacity="0.9"/>
+            <rect x="192" y="107" width="6" height="22" rx="2" fill="#c9a96e" opacity="0.7"/>
+            <ellipse cx="195" cy="200" rx="26" ry="34" fill="#1e4035"/>
+            <ellipse cx="195" cy="200" rx="26" ry="34" fill="none" stroke="#c9a96e" stroke-width="1.8"/>
+            <ellipse cx="195" cy="200" rx="16" ry="22" fill="#2d7a5f" opacity="0.9"/>
+            <circle cx="187" cy="190" r="4" fill="rgba(255,255,255,0.4)"/>
+            <ellipse cx="195" cy="200" rx="32" ry="40" fill="none" stroke="rgba(201,169,110,0.25)" stroke-width="1" stroke-dasharray="2,3"/>
+            <!-- Reflections -->
+            <ellipse cx="105" cy="240" rx="20" ry="4" fill="rgba(201,169,110,0.08)"/>
+            <ellipse cx="195" cy="240" rx="20" ry="4" fill="rgba(201,169,110,0.08)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="col-card-overlay">
+        <div class="col-card-label">Coleção</div>
+        <div class="col-card-name">Brincos<br>Exclusivos</div>
+        <a href="#produtos" class="col-card-link">Ver peças</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-img-frame">
+          <svg viewBox="0 0 400 500" width="400" height="500" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="500" fill="#152d25"/>
+            <ellipse cx="200" cy="250" rx="160" ry="180" fill="rgba(42,85,72,0.3)"/>
+            <!-- Hand silhouette with ring -->
+            <path d="M200,420 C160,420 140,400 140,360 L140,200 C140,185 150,180 160,180 L160,160 C160,148 168,140 178,140 L178,120 C178,108 186,100 196,100 L204,100 C214,100 222,108 222,120 L222,140 C232,140 240,148 240,160 L240,180 C250,180 260,185 260,200 L260,360 C260,400 240,420 200,420 Z" fill="rgba(247,244,239,0.06)" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
+            <!-- Ring on finger -->
+            <ellipse cx="200" cy="175" rx="24" ry="8" fill="none" stroke="#c9a96e" stroke-width="3" opacity="0.8"/>
+            <!-- Emerald stone on ring -->
+            <ellipse cx="200" cy="163" rx="14" ry="18" fill="#1e4035"/>
+            <ellipse cx="200" cy="163" rx="14" ry="18" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+            <ellipse cx="200" cy="163" rx="9" ry="12" fill="#2d7a5f" opacity="0.9"/>
+            <!-- Stone sparkle -->
+            <circle cx="193" cy="156" r="3" fill="rgba(255,255,255,0.5)"/>
+            <!-- Halo -->
+            <ellipse cx="200" cy="163" rx="20" ry="24" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1" stroke-dasharray="2,3"/>
+            <!-- Small diamonds in halo -->
+            <circle cx="200" cy="139" r="2" fill="white" opacity="0.6"/>
+            <circle cx="220" cy="148" r="1.5" fill="white" opacity="0.5"/>
+            <circle cx="221" cy="174" r="1.5" fill="white" opacity="0.5"/>
+            <circle cx="179" cy="148" r="1.5" fill="white" opacity="0.5"/>
+            <circle cx="179" cy="174" r="1.5" fill="white" opacity="0.5"/>
+            <!-- Ambient glow -->
+            <ellipse cx="200" cy="163" rx="50" ry="50" fill="rgba(168,205,212,0.06)"/>
+            <!-- Brand mark -->
+            <text x="200" y="460" text-anchor="middle" fill="rgba(201,169,110,0.2)" font-family="serif" font-size="13" letter-spacing="8">BORZI</text>
+          </svg>
+          <div class="about-stat">
+            <div class="about-stat-num">100%</div>
+            <div class="about-stat-label">Artesanal</div>
+          </div>
+        </div>
+        <div class="about-accent-box"></div>
+      </div>
+
+      <div class="about-text reveal reveal-delay-2">
+        <div class="section-eyebrow"><span></span> Nossa história</div>
+        <h2 class="section-title">Joias criadas com<br><em>alma e intenção.</em></h2>
+        <p class="section-body">
+          A Borzi Joias nasceu do desejo de transformar metais nobres em objetos carregados de significado. Cada peça surge de um processo profundamente humano — desenhada à mão, modelada com cuidado e finalizada com a atenção que apenas o trabalho artesanal pode oferecer.
+        </p>
+        <p class="section-body" style="margin-top: 16px;">
+          Trabalhamos com ouro, prata 950 e pedras delicadas selecionadas com critério. O resultado são joias que não apenas embelezam, mas que contam histórias, carregam identidade e se tornam parte de quem as usa.
+        </p>
+        <div class="about-values">
+          <div class="about-value">100% Autoral</div>
+          <div class="about-value">Feito à Mão</div>
+          <div class="about-value">Design Exclusivo</div>
+          <div class="about-value">Metais Nobres</div>
+          <div class="about-value">Arte Contemporânea</div>
+          <div class="about-value">Com Significado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="processo">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="section-eyebrow" style="justify-content:center"><span></span> Como criamos <span></span></div>
+      <h2 class="section-title">O processo de uma joia <em>autoral.</em></h2>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="step-name">Concepção e Desenho</div>
+        <p class="step-desc">Tudo começa no papel. Cada ideia é esboçada à mão, com traços que capturam a essência da peça antes de ela ganhar forma no metal.</p>
+      </div>
+
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">02</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="step-name">Modelagem Artesanal</div>
+        <p class="step-desc">O desenho se transforma em volume. Trabalhamos a cera ou diretamente no metal, dando forma tridimensional a cada detalhe imaginado.</p>
+      </div>
+
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/></svg>
+        </div>
+        <div class="step-name">Cravação de Pedras</div>
+        <p class="step-desc">Pedras delicadas são selecionadas e cravadas uma a uma. Cada pedra é escolhida pela sua cor, clareza e harmonia com a peça que irá compor.</p>
+      </div>
+
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-num">04</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="step-name">Acabamento Final</div>
+        <p class="step-desc">Polimento, brunimento e inspeção cuidadosa. A joia só sai do atelier quando cada detalhe reflete o padrão de excelência que a Borzi representa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="produtos">
+  <div class="container">
+    <div class="products-header reveal">
+      <div>
+        <div class="section-eyebrow"><span></span> Peças em destaque</div>
+        <h2 class="section-title">Joias com <em>identidade</em><br>e alma própria.</h2>
+      </div>
+      <a href="#colecoes" class="btn-primary">Ver todas as peças</a>
+    </div>
+
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-img">
+          <div class="product-img-bg">
+            <svg viewBox="0 0 240 300" width="240" height="300" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="300" fill="#ede8df"/>
+              <ellipse cx="120" cy="150" rx="80" ry="80" fill="rgba(201,169,110,0.06)"/>
+              <!-- Silver ring with aqua stone -->
+              <ellipse cx="120" cy="185" rx="42" ry="11" fill="none" stroke="#b8bec6" stroke-width="7" opacity="0.85"/>
+              <rect x="77" y="120" width="9" height="65" rx="3" fill="#c0c8d0" opacity="0.8"/>
+              <rect x="154" y="120" width="9" height="65" rx="3" fill="#c0c8d0" opacity="0.8"/>
+              <!-- Teardrop aqua stone -->
+              <ellipse cx="120" cy="108" rx="19" ry="24" fill="#a8cdd4" opacity="0.85"/>
+              <ellipse cx="120" cy="108" rx="19" ry="24" fill="none" stroke="#8ab0b8" stroke-width="1.2"/>
+              <!-- Halo -->
+              <circle cx="120" cy="86" r="3.5" fill="white" opacity="0.7"/>
+              <circle cx="140" cy="94" r="2.5" fill="white" opacity="0.6"/>
+              <circle cx="143" cy="118" r="2.5" fill="white" opacity="0.55"/>
+              <circle cx="97" cy="94" r="2.5" fill="white" opacity="0.6"/>
+              <circle cx="94" cy="118" r="2.5" fill="white" opacity="0.55"/>
+              <!-- Sparkle -->
+              <circle cx="110" cy="98" r="3.5" fill="rgba(255,255,255,0.65)"/>
+            </svg>
+          </div>
+          <div class="product-badge">Exclusivo</div>
+          <div class="product-actions">
+            <button class="product-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-action-btn">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="product-name">Anel Aquarelle</div>
+        <div class="product-material">Prata 950 · Água-marinha</div>
+        <div class="product-price">R$ 890</div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-img">
+          <div class="product-img-bg">
+            <svg viewBox="0 0 240 300" width="240" height="300" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="300" fill="#e8e2d8"/>
+              <ellipse cx="120" cy="150" rx="80" ry="80" fill="rgba(42,85,72,0.05)"/>
+              <!-- Gold ring with emerald -->
+              <ellipse cx="120" cy="185" rx="38" ry="10" fill="none" stroke="#c9a96e" stroke-width="7" opacity="0.85"/>
+              <rect x="82" y="130" width="8" height="55" rx="2.5" fill="#d4a84b" opacity="0.8"/>
+              <rect x="150" y="130" width="8" height="55" rx="2.5" fill="#d4a84b" opacity="0.8"/>
+              <!-- Round emerald center -->
+              <circle cx="120" cy="116" r="20" fill="#1e4035"/>
+              <circle cx="120" cy="116" r="20" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+              <circle cx="120" cy="116" r="13" fill="#2d7a5f" opacity="0.9"/>
+              <!-- Stone highlight -->
+              <circle cx="112" cy="108" r="4.5" fill="rgba(255,255,255,0.45)"/>
+              <!-- Small accent diamonds -->
+              <circle cx="94" cy="120" r="3" fill="white" opacity="0.55"/>
+              <circle cx="146" cy="120" r="3" fill="white" opacity="0.55"/>
+              <circle cx="97" cy="107" r="2" fill="white" opacity="0.4"/>
+              <circle cx="143" cy="107" r="2" fill="white" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="product-badge">Mais Amado</div>
+          <div class="product-actions">
+            <button class="product-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-action-btn">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="product-name">Anel Esmeralda Sol</div>
+        <div class="product-material">Ouro 18k · Esmeralda Natural</div>
+        <div class="product-price">R$ 2.400</div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card reveal reveal-delay-3">
+        <div class="product-img">
+          <div class="product-img-bg">
+            <svg viewBox="0 0 240 300" width="240" height="300" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="300" fill="#eae5db"/>
+              <!-- Oval emerald ring with sun halo -->
+              <ellipse cx="120" cy="185" rx="40" ry="11" fill="none" stroke="#b8bec6" stroke-width="7" opacity="0.8"/>
+              <rect x="79" y="122" width="9" height="63" rx="3" fill="#c0c8d0" opacity="0.8"/>
+              <rect x="152" y="122" width="9" height="63" rx="3" fill="#c0c8d0" opacity="0.8"/>
+              <!-- Oval emerald -->
+              <ellipse cx="120" cy="108" rx="20" ry="26" fill="#1e4035"/>
+              <ellipse cx="120" cy="108" rx="20" ry="26" fill="none" stroke="#a0a8b0" stroke-width="1.5"/>
+              <ellipse cx="120" cy="108" rx="13" ry="18" fill="#2d7a5f" opacity="0.9"/>
+              <circle cx="112" cy="98" r="4" fill="rgba(255,255,255,0.45)"/>
+              <!-- Sun rays halo -->
+              <circle cx="120" cy="108" r="32" fill="none" stroke="rgba(180,192,200,0.4)" stroke-width="1.5"/>
+              <circle cx="120" cy="108" r="34" fill="none" stroke="rgba(180,192,200,0.15)" stroke-width="1"/>
+              <!-- Halo dots -->
+              <circle cx="120" cy="74" r="3" fill="#b8bec6" opacity="0.6"/>
+              <circle cx="152" cy="76" r="2.5" fill="#b8bec6" opacity="0.5"/>
+              <circle cx="154" cy="108" r="2.5" fill="#b8bec6" opacity="0.5"/>
+              <circle cx="88" cy="76" r="2.5" fill="#b8bec6" opacity="0.5"/>
+              <circle cx="86" cy="108" r="2.5" fill="#b8bec6" opacity="0.5"/>
+              <circle cx="120" cy="142" r="3" fill="#b8bec6" opacity="0.6"/>
+              <circle cx="149" cy="137" r="2" fill="#b8bec6" opacity="0.4"/>
+              <circle cx="91" cy="137" r="2" fill="#b8bec6" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="product-actions">
+            <button class="product-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-action-btn">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="product-name">Anel Aurora Verde</div>
+        <div class="product-material">Prata 950 · Esmeralda · Diamantes</div>
+        <div class="product-price">R$ 1.650</div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card reveal reveal-delay-4">
+        <div class="product-img">
+          <div class="product-img-bg">
+            <svg viewBox="0 0 240 300" width="240" height="300" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="300" fill="#e5dfd4"/>
+              <!-- Pendant necklace -->
+              <path d="M40,40 Q120,240 200,40" fill="none" stroke="#c9a96e" stroke-width="2.5" opacity="0.65" stroke-dasharray="5,4"/>
+              <path d="M40,40 Q120,225 200,40" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="6" opacity="0.4"/>
+              <!-- Pendant frame -->
+              <ellipse cx="120" cy="220" rx="24" ry="30" fill="#1e4035"/>
+              <ellipse cx="120" cy="220" rx="24" ry="30" fill="none" stroke="#c9a96e" stroke-width="2"/>
+              <!-- Center emerald -->
+              <ellipse cx="120" cy="220" rx="14" ry="20" fill="#2d7a5f" opacity="0.9"/>
+              <!-- Gold star ornament ring around -->
+              <circle cx="120" cy="220" r="32" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1.5"/>
+              <circle cx="120" cy="188" r="2.5" fill="#c9a96e" opacity="0.8"/>
+              <circle cx="152" cy="220" r="2.5" fill="#c9a96e" opacity="0.8"/>
+              <circle cx="88" cy="220" r="2.5" fill="#c9a96e" opacity="0.8"/>
+              <circle cx="120" cy="252" r="2.5" fill="#c9a96e" opacity="0.8"/>
+              <!-- Stone sparkle -->
+              <circle cx="112" cy="210" r="3.5" fill="rgba(255,255,255,0.5)"/>
+              <!-- Bail -->
+              <rect x="112" y="190" width="16" height="10" rx="4" fill="#c9a96e" opacity="0.85"/>
+            </svg>
+          </div>
+          <div class="product-badge">Novo</div>
+          <div class="product-actions">
+            <button class="product-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-action-btn">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="product-name">Colar Jardim Secreto</div>
+        <div class="product-material">Ouro 18k · Esmeralda · Corrente</div>
+        <div class="product-price">R$ 3.200</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section class="editorial">
+  <div class="editorial-inner">
+    <div class="editorial-text-side reveal">
+      <div class="section-eyebrow" style="color: var(--gold)"><span style="background:var(--gold)"></span> Editorial</div>
+      <h2 class="section-title">Arte que se <em>usa</em><br>todos os dias.</h2>
+      <p class="section-body" style="margin: 24px 0 36px;">
+        Cada joia Borzi é pensada para fazer parte da sua vida — não apenas para ocasiões especiais. Peças que envelhecem com beleza, que carregam histórias e que se tornam extensões da sua identidade.
+      </p>
+      <a href="#produtos" class="btn-primary">Ver Coleção Completa</a>
+    </div>
+    <div class="editorial-grid-side">
+      <div class="editorial-cell">
+        <svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" fill="#1e3028"/>
+          <ellipse cx="100" cy="100" rx="60" ry="60" fill="rgba(42,85,72,0.4)"/>
+          <circle cx="100" cy="100" r="32" fill="#1e4035"/>
+          <circle cx="100" cy="100" r="32" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+          <circle cx="100" cy="100" r="22" fill="#2d7a5f" opacity="0.9"/>
+          <circle cx="90" cy="88" r="6" fill="rgba(255,255,255,0.4)"/>
+          <circle cx="100" cy="68" r="3" fill="#c9a96e" opacity="0.7"/>
+          <circle cx="132" cy="100" r="3" fill="#c9a96e" opacity="0.7"/>
+          <circle cx="68" cy="100" r="3" fill="#c9a96e" opacity="0.7"/>
+          <circle cx="100" cy="132" r="3" fill="#c9a96e" opacity="0.7"/>
+        </svg>
+        <div class="editorial-cell-overlay"></div>
+      </div>
+      <div class="editorial-cell">
+        <svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" fill="#2a3525"/>
+          <ellipse cx="100" cy="100" rx="70" ry="55" fill="rgba(201,169,110,0.05)"/>
+          <!-- Earring pair -->
+          <circle cx="70" cy="60" r="6" fill="#c9a96e" opacity="0.9"/>
+          <rect x="67" y="66" width="6" height="14" rx="2" fill="#c9a96e" opacity="0.7"/>
+          <ellipse cx="70" cy="110" rx="20" ry="26" fill="#1e4035"/>
+          <ellipse cx="70" cy="110" rx="20" ry="26" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+          <ellipse cx="70" cy="110" rx="12" ry="17" fill="#2d7a5f" opacity="0.9"/>
+          <circle cx="63" cy="101" r="3.5" fill="rgba(255,255,255,0.4)"/>
+          <circle cx="130" cy="60" r="6" fill="#c9a96e" opacity="0.9"/>
+          <rect x="127" y="66" width="6" height="14" rx="2" fill="#c9a96e" opacity="0.7"/>
+          <ellipse cx="130" cy="110" rx="20" ry="26" fill="#1e4035"/>
+          <ellipse cx="130" cy="110" rx="20" ry="26" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+          <ellipse cx="130" cy="110" rx="12" ry="17" fill="#2d7a5f" opacity="0.9"/>
+          <circle cx="123" cy="101" r="3.5" fill="rgba(255,255,255,0.4)"/>
+        </svg>
+        <div class="editorial-cell-overlay"></div>
+      </div>
+      <div class="editorial-cell">
+        <svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" fill="#1a2920"/>
+          <!-- Stacked rings composition -->
+          <ellipse cx="100" cy="140" rx="50" ry="13" fill="none" stroke="#b8bec6" stroke-width="8" opacity="0.7"/>
+          <ellipse cx="100" cy="120" rx="42" ry="11" fill="none" stroke="#c9a96e" stroke-width="7" opacity="0.75"/>
+          <ellipse cx="100" cy="102" rx="36" ry="9" fill="none" stroke="#b8bec6" stroke-width="6" opacity="0.65"/>
+          <!-- Top stone -->
+          <circle cx="100" cy="85" r="16" fill="#1e4035"/>
+          <circle cx="100" cy="85" r="16" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+          <circle cx="100" cy="85" r="10" fill="#2d7a5f" opacity="0.9"/>
+          <circle cx="93" cy="78" r="3.5" fill="rgba(255,255,255,0.45)"/>
+        </svg>
+        <div class="editorial-cell-overlay"></div>
+      </div>
+      <div class="editorial-cell">
+        <svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" fill="#1e2f22"/>
+          <!-- Necklace on surface -->
+          <ellipse cx="100" cy="100" rx="70" ry="40" fill="none" stroke="#c9a96e" stroke-width="2" opacity="0.5" stroke-dasharray="4,4"/>
+          <ellipse cx="100" cy="140" rx="18" ry="22" fill="#1e4035"/>
+          <ellipse cx="100" cy="140" rx="18" ry="22" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+          <ellipse cx="100" cy="140" rx="11" ry="14" fill="#2d7a5f" opacity="0.9"/>
+          <circle cx="93" cy="132" r="3.5" fill="rgba(255,255,255,0.5)"/>
+          <!-- Aqua stone accent -->
+          <circle cx="30" cy="100" r="10" fill="#a8cdd4" opacity="0.7"/>
+          <circle cx="170" cy="100" r="10" fill="#a8cdd4" opacity="0.7"/>
+          <circle cx="25" cy="97" r="3" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="165" cy="97" r="3" fill="rgba(255,255,255,0.5)"/>
+        </svg>
+        <div class="editorial-cell-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="insta-section" id="contato">
+  <div class="container">
+    <div class="reveal">
+      <div class="divider" style="margin-bottom: 40px;">
+        <div class="divider-line"></div>
+        <div class="star" style="width:12px;height:12px"></div>
+        <div class="divider-line"></div>
+      </div>
+      <p class="insta-sub">Siga nossa jornada</p>
+      <h2 class="insta-handle"><a href="https://instagram.com/borzijoias" target="_blank">@borzijoias</a></h2>
+    </div>
+  </div>
+
+  <div style="padding: 0 2px; margin-bottom: 48px;">
+    <div class="insta-grid">
+      <div class="insta-cell">
+        <svg viewBox="0 0 160 160" width="160" height="160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <rect width="160" height="160" fill="#1e3028"/>
+          <circle cx="80" cy="80" r="40" fill="#2d7a5f" opacity="0.7"/>
+          <circle cx="80" cy="80" r="26" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+          <circle cx="68" cy="68" r="7" fill="rgba(255,255,255,0.4)"/>
+        </svg>
+        <div class="insta-cell-overlay">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+      </div>
+      <div class="insta-cell">
+        <svg viewBox="0 0 160 160" width="160" height="160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <rect width="160" height="160" fill="#152d25"/>
+          <ellipse cx="80" cy="80" rx="36" ry="44" fill="#1e4035"/>
+          <ellipse cx="80" cy="80" rx="36" ry="44" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+          <ellipse cx="80" cy="80" rx="22" ry="30" fill="#2d7a5f" opacity="0.9"/>
+          <circle cx="68" cy="66" r="6" fill="rgba(255,255,255,0.5)"/>
+        </svg>
+        <div class="insta-cell-overlay">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+      </div>
+      <div class="insta-cell">
+        <svg viewBox="0 0 160 160" width="160" height="160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <rect width="160" height="160" fill="#1a2a1e"/>
+          <ellipse cx="80" cy="100" rx="32" ry="9" fill="none" stroke="#b8bec6" stroke-width="6" opacity="0.7"/>
+          <rect x="60" y="60" width="7" height="40" rx="2" fill="#c0c8d0" opacity="0.7"/>
+          <rect x="93" y="60" width="7" height="40" rx="2" fill="#c0c8d0" opacity="0.7"/>
+          <ellipse cx="80" cy="50" rx="18" ry="22" fill="#a8cdd4" opacity="0.85"/>
+          <circle cx="72" cy="42" r="4" fill="rgba(255,255,255,0.55)"/>
+        </svg>
+        <div class="insta-cell-overlay">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+      </div>
+      <div class="insta-cell">
+        <svg viewBox="0 0 160 160" width="160" height="160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <rect width="160" height="160" fill="#1e3525"/>
+          <path d="M30,30 Q80,140 130,30" fill="none" stroke="#c9a96e" stroke-width="2" opacity="0.5" stroke-dasharray="4,3"/>
+          <ellipse cx="80" cy="130" rx="22" ry="28" fill="#1e4035"/>
+          <ellipse cx="80" cy="130" rx="22" ry="28" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+          <ellipse cx="80" cy="130" rx="13" ry="18" fill="#2d7a5f" opacity="0.9"/>
+          <circle cx="72" cy="120" r="4" fill="rgba(255,255,255,0.45)"/>
+        </svg>
+        <div class="insta-cell-overlay">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+      </div>
+      <div class="insta-cell">
+        <svg viewBox="0 0 160 160" width="160" height="160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <rect width="160" height="160" fill="#182a1e"/>
+          <circle cx="80" cy="80" r="44" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.25"/>
+          <circle cx="80" cy="80" r="28" fill="#1e4035"/>
+          <circle cx="80" cy="80" r="28" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+          <circle cx="80" cy="80" r="18" fill="#2d7a5f" opacity="0.9"/>
+          <!-- Star halo dots -->
+          <circle cx="80" cy="52" r="2.5" fill="#c9a96e" opacity="0.7"/>
+          <circle cx="108" cy="80" r="2.5" fill="#c9a96e" opacity="0.7"/>
+          <circle cx="52" cy="80" r="2.5" fill="#c9a96e" opacity="0.7"/>
+          <circle cx="80" cy="108" r="2.5" fill="#c9a96e" opacity="0.7"/>
+          <circle cx="70" cy="70" r="5" fill="rgba(255,255,255,0.4)"/>
+        </svg>
+        <div class="insta-cell-overlay">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+      </div>
+      <div class="insta-cell">
+        <svg viewBox="0 0 160 160" width="160" height="160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <rect width="160" height="160" fill="#1a2d22"/>
+          <!-- Double ring artistic -->
+          <ellipse cx="65" cy="100" rx="28" ry="8" fill="none" stroke="#c9a96e" stroke-width="5" opacity="0.75"/>
+          <ellipse cx="105" cy="90" rx="22" ry="7" fill="none" stroke="#b8bec6" stroke-width="5" opacity="0.65"/>
+          <ellipse cx="65" cy="78" rx="14" ry="18" fill="#a8cdd4" opacity="0.85"/>
+          <circle cx="58" cy="70" r="4" fill="rgba(255,255,255,0.5)"/>
+          <ellipse cx="105" cy="68" rx="12" ry="14" fill="#1e4035"/>
+          <ellipse cx="105" cy="68" rx="12" ry="14" fill="none" stroke="#c9a96e" stroke-width="1.2"/>
+          <ellipse cx="105" cy="68" rx="7" ry="9" fill="#2d7a5f" opacity="0.9"/>
+          <circle cx="100" cy="62" r="2.5" fill="rgba(255,255,255,0.5)"/>
+        </svg>
+        <div class="insta-cell-overlay">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="text-align:center">
+    <a href="https://instagram.com/borzijoias" target="_blank" class="btn-primary">Ver no Instagram</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-logo">BORZI</div>
+        <p class="footer-brand-desc">
+          Joias autorais feitas à mão com metais nobres, pedras delicadas e muita alma. Cada peça carrega uma história para eternizar.
+        </p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/borzijoias" target="_blank" class="footer-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/5548999999999" target="_blank" class="footer-social" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372C7.75 9.27 7 10 7 11.46c0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" stroke="currentColor" stroke-linecap="round"/><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z" stroke="currentColor"/></svg>
+          </a>
+          <a href="mailto:contato@borzijoias.com" class="footer-social" aria-label="Email">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Coleções</h4>
+        <ul>
+          <li><a href="#colecoes">Anéis Autorais</a></li>
+          <li><a href="#colecoes">Colares & Pingentes</a></li>
+          <li><a href="#colecoes">Brincos</a></li>
+          <li><a href="#colecoes">Peças Exclusivas</a></li>
+          <li><a href="#colecoes">Ver Tudo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Atelier</h4>
+        <ul>
+          <li><a href="#sobre">Nossa História</a></li>
+          <li><a href="#processo">Processo Artesanal</a></li>
+          <li><a href="#">Encomendas</a></li>
+          <li><a href="#">Cuidados com as Joias</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p style="font-size:0.78rem;color:rgba(247,244,239,0.3);line-height:1.7;margin-bottom:18px;">Receba em primeira mão novas coleções e histórias do atelier.</p>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="seu@email.com">
+          <button class="newsletter-btn">→</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Borzi Joias. Todos os direitos reservados.</div>
+      <div class="footer-star">
+        <div class="star-sm" style="background:var(--gold);opacity:0.4"></div>
+        <span style="font-size:0.65rem;letter-spacing:0.2em;color:rgba(247,244,239,0.2)">JOIAS AUTORAIS · FEITAS À MÃO</span>
+        <div class="star-sm" style="background:var(--gold);opacity:0.4"></div>
+      </div>
+      <div style="font-size:0.7rem;color:rgba(247,244,239,0.15);">
+        <a href="#" style="color:inherit;text-decoration:none">Privacidade</a>
+        &nbsp;·&nbsp;
+        <a href="#" style="color:inherit;text-decoration:none">Termos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top  = my + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
+      ring.style.transform = 'translate(-50%,-50%) scale(1.5)';
+      ring.style.opacity = '0.3';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.opacity = '0.6';
+    });
+  });
+
+  // Nav scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+
+  // Marquee duplicate
+  const track = document.getElementById('marqueeTrack');
+  track.innerHTML += track.innerHTML;
+</script>
+</body>
+</html>
